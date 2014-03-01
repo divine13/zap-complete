@@ -1,0 +1,29 @@
+<%= provide(:title, "#{@post.user.name}`s trend") %>
+<span class="image image-full">
+<%= image_tag @post.picture.url if @post.picture? %>
+  </span>
+<div id="detail">
+<div class="users">
+<li><strong>Designed by:</strong> <%= link_to(avatar_for_small(@post.user), everyone_user_path(@post.user) ) %><%= link_to(@post.user.name, everyone_user_path(@post.user)) %> </li>
+<li><strong> More about this trend:</strong> <pre><%= @post.about %></li></pre>
+<li><strong>Contact details for this Trend:</strong> <%# @post.contact_details %></li>
+<% if current_user %>
+<%= link_to "like this", like_everyone_epost_path(@post), class: "btn btn-small"%>
+<% end -%>
+  This trend has  <%= pluralize(@likes, "like") %>
+</div>
+</div>
+<% right_user(@post) do  %>
+<h4 class="ft"> <%= link_to('Edit post', edit_everyone_epost_path(@post)) %>
+ <%= link_to "delete", everyone_epost_path(@post), method: :delete, confirm: "are you sure you want to delete this post " %></h4>
+    <% end %>
+<h3>comments</h3>
+<div id="comment">
+	<% if @post.ecomments.exists? %> <co class="ch10_191_1" />
+	<%= render @post.ecomments.select(&:persisted?) %>
+	<% else  %>
+	There is no comments for this ticket
+	<% end -%>
+
+	<%= render 'everyone/ecomments/form' %>
+</div>

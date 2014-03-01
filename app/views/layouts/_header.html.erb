@@ -1,0 +1,31 @@
+<header  class="navbar navbar">
+    	<div class="navbar-inner">
+    		<div class="container">
+    			<nav>
+            <%= link_to("Zap!", root_path, id: "logo") %>
+    	                <ul class="nav pull-right">
+                        <li><%= link_to "Home", root_path %></li>
+                          <li><%= link_to "Pro trends", posts_path %></li>
+                           <li> <%= link_to "People`s trends", everyone_eposts_path %></li>
+                          <li> <%= link_to "Hot trends", hot_index_path %></li>
+                    <% if(signed_in?)  %>
+
+                              <% if(current_user) %>
+                                  <li> <%= link_to("logged in as: #{current_user}",
+                                   everyone_user_path(current_user)) %> </li>
+                                  <% else %>
+                        <li> <%= link_to("Logged in as: #{current_user}" ) %> </li>
+                                  <% end %>
+                                  <li><%= link_to "Admin dash", admin_root_path if current_user.admin? %></li>
+                                  <li><%= link_to "Fashionistars", everyone_users_path %></li>
+                                  
+                        <li> <%= link_to "Sign out", destroy_user_session_path, method: "delete"  %> </li>
+
+                    <% else %>
+                        <li><%= link_to "Sign in", new_user_session_path%></li>
+                    <% end %>
+    				</ul>
+    			</nav>	
+    		</div>
+    	</div>
+    </header>

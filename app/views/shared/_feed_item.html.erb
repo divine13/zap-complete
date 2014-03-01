@@ -1,0 +1,15 @@
+<li id="<%= feed_item.id %>">
+  <div class="image ">
+  <%= image_tag(feed_item.picture) if feed_item.picture? %>
+  </div>
+ <pre><span class="content"><%= feed_item.about %></span></pre>
+  Posted by
+  <div><%= link_to avatar_for_small(feed_item.user), [:everyone, feed_item.user] %></div>
+<span class="user">
+<%= link_to feed_item.user.name, [:everyone, feed_item.user] %>
+</span>
+
+<span class="timestamp">
+Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
+</span>
+      </li>

@@ -1,0 +1,13 @@
+<a href="<%= everyone_user_path(current_user) %>" class="image" >
+<%= avatar_for(current_user) %>
+</a>
+<h1>
+<%= current_user.name %>
+</h1>
+<span>
+<%= link_to "view my profile", [:everyone, current_user] %>
+</span>
+<span>
+<%= pluralize(current_user.posts.count, "post") %>
+</span>
+

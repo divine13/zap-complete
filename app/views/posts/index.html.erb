@@ -1,0 +1,40 @@
+<h1>lebo and chubz`s posts </h1>
+<div class="users">
+  <% admins_only do  %>
+  <h4 class="ft"> <%= link_to("post new pro trend", new_post_path) %></h4>
+      <% end %>
+  <h4><%= link_to("post your own new trend", new_everyone_epost_path ) %></h4>
+  <%= will_paginate(@post) %>
+  <% @post.each do |post| %>
+      <li>
+        <div class="image ">
+          <% if post.picture?%>
+              <%= link_to(image_tag(post.picture.url(:thumb)),
+                          everyone_epost_path(post) ) %>
+          <% end -%>
+        </div>
+        <div class="about">
+          This post is about:
+          <pre> <%= link_to(post.about, post_path(post)) %> </pre>
+          <p> Posted by:</p>
+          <div class="image"><%= link_to(avatar_for_small(post.user), everyone_user_path(post.user) ) %></div>
+          <%= link_to(post.user,  everyone_user_path(post.user)) %>
+        </div>
+        <div class="ft">
+          <h4>
+            Designed by: <%= post.user.name %>
+
+          </h4>
+          <div >
+            Posted about <%= time_ago_in_words(post.created_at) %> ago
+          </div>
+          <div>
+            Likes: <%= show_like_count(post) %>
+          </div>
+  <% end %>
+  </div>
+  <%= will_paginate(@post) %>
+
+  </li>
+</div>
+

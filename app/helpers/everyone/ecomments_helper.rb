@@ -1,0 +1,2 @@
+module Everyone::EcommentsHelper
+end

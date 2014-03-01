@@ -1,0 +1,39 @@
+<div class="row">
+<aside class="span4">
+	<section>
+<h1>
+<p class="image"><%= avatar_for(@user)%> </p> <br >
+<%=  @user.email %> 
+ <%= link_to "Update my profile", edit_everyone_user_path(@user) if current_user %>
+</h1>
+ </section>
+ <section>
+ 	
+ 	<%= render 'stats' %>
+ </section>
+ <section>
+ 	<%= render 'show_bio' %>
+ </section>
+</aside>
+<div class="span8">
+	<%= render 'follow_form'  if signed_in? %>
+
+<% if(@user.eposts.any?) %>
+<h3>posts[<%= @user.eposts.count %>]</h3>
+<ol class="microposts">
+<% @user.eposts.each do |post| %>
+<div class="image">
+<%= image_tag post.picture if post.picture? %> <br >
+</div>
+<div class="users">
+<pre><%=link_to(post.about,  everyone_epost_path(post)) %>
+Posted about <%= time_ago_in_words(post.created_at) %> ago</pre>
+</div>
+<% end  %>
+
+<% else %>
+<h3> This users has no activity yet </h3>
+</ol>
+<% end %>
+</div>
+</div>

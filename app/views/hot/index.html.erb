@@ -1,0 +1,17 @@
+<h1>Hot trends</h1>
+<div class="users">
+<% @most_likes.each do |like| %>
+    <li>
+      <div class="image ">
+        <% if like.epost.picture? %>
+            <%= link_to(image_tag(like.epost.picture.url(:thumb)),
+                        everyone_epost_path(like.epost) ) %>
+        <% end -%>
+      </div>
+<pre><%= link_to(like.epost.about, everyone_epost_path(like.epost)) %>
+Posted by:<%= like.epost.user %>
+<h4 class="ft"><%= show_likes_count(like.epost)%></h4>
+</pre>
+    </li>
+<% end  %>
+  </div>
