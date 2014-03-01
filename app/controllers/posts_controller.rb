@@ -15,7 +15,7 @@ class PostsController < ApplicationController
   def create 
   	@post = current_user.posts.build(post_params)
   	if(@post.save)
-  		flash[:success] = "you post has been successfully zapped(posted)"
+  		flash[:success] = "you post has been successfully zapped!"
   		redirect_to([@post])
   	else
   		flash[:error] = "post could not be created "
@@ -45,6 +45,7 @@ class PostsController < ApplicationController
   def destroy 
   	@post.destroy 
   	flash[:success] = "post has been deleted"
+
   end
 
     def like

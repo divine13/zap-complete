@@ -1,7 +1,7 @@
 class Like < ActiveRecord::Base
 
-  belongs_to :user
-  belongs_to :epost
+  belongs_to :user, dependent: :destroy
+  belongs_to :epost, dependent: :destroy
 
   validates :user_id, presence: true
   #validates :epost_id, presence: true

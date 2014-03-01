@@ -18,12 +18,12 @@
 <% admins_only do  %>
 <h4 class="ft"> <%= link_to('Edit post', edit_post_path(@post)) %></h4>
     <% end %>
-<h3>comments</h3>
+<h3>Comments</h3>
 <div id="comment">
 	<% if @post.comments.exists? %> <co class="ch10_191_1" />
 	<%= render @post.comments.select(&:persisted?) %>
 	<% else  %>
-	There is no comments for this Trend
+	There are no comments for this Trend
 	<% end -%>
 	<%= render 'comments/form' %>
 </div>

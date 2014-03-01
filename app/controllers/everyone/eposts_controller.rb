@@ -17,7 +17,7 @@ class Everyone::EpostsController < ApplicationController
   def create 
   	@post = current_user.eposts.build(epost_params)
   	if(@post.save)
-  		flash[:success] = "your post has been successfully zapped(posted)"
+  		flash[:success] = "your post has been successfully zapped!"
   		redirect_to([:everyone, @post])
   	else
   		flash[:error] = "post could not be created "
@@ -45,8 +45,11 @@ class Everyone::EpostsController < ApplicationController
   end
 
   def destroy 
-  	@post.destroy 
+  	@post.destroy
+    redirect_to everyone_eposts_path
   	flash[:success] = "post has been deleted"
+      #redirect_to everyone_epost_path
+
   end
 
     def like

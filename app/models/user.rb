@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
 
          has_attached_file :picture, :styles => { :medium => "225x225>", :thumb => "100x100>" },
-                           :default_url => ":rails_root/images/:style/profile.jpg",  
+                           :default_url => ":rails_root/images/:style/profile.jpg",
                            :storage=> :dropbox, :dropbox_credentials => Rails.root.join("config/dropbox.yml")
 
 
