@@ -3,7 +3,7 @@
 Zap file is a fashion site built with rails 4 
 
 
-if you want to take a look at zap you can visit [*here*](http://zap.heroku.com)
+if you want to take a look at zap you can visit [*here*](http://chulee.heroku.com)
 
 # contributions
 
